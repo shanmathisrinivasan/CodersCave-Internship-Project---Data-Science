@@ -1,0 +1,39 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Define the dataset directly in the code
+data = {
+    'Sno': [123000, 23000, 1],
+    'State': ['Rajasthan', 'Odisha', 'Other (17007)'],
+    'conversation_id': [1151, 2301, 3451],
+    'retweet_count': [4, 5, 6],
+    'reply_count': [100, 200, 150],
+    'like_count': [2500, 3500, 3000],
+    'quote_count': [10, 20, 15]
+}
+
+# Create a DataFrame from the dataset
+df = pd.DataFrame(data)
+
+# Display the DataFrame to understand its structure and content
+print(df)
+
+# Check for missing values and data types of columns
+print(df.info())
+
+# Perform basic statistical analysis on numerical columns
+print(df.describe())
+
+# Visualize the distribution of numerical columns using histograms
+df.hist(figsize=(12, 8))
+plt.tight_layout()
+plt.show()
+
+# Visualize the correlation between numerical columns using a heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt=".2f")
+plt.title('Correlation Heatmap')
+plt.show()
+
+# Additional analysis and visualizations can be added based on specific requirements
