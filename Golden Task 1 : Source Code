@@ -1,0 +1,38 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'Date': [
+        '05/01/2013 - 12/07/2013',
+        '12/07/2013 - 07/15/2014',
+        '07/15/2014 - 02/21/2015',
+        '02/21/2015 - 09/29/2015',
+        '09/29/2015 - 05/07/2016',
+        '05/07/2016 - 12/13/2016',
+        '12/13/2016 - 07/21/2017',
+        '07/21/2017 - 02/27/2018',
+        '02/27/2018 - 10/05/2018',
+        '10/05/2018 - 05/14/2019',
+    ],
+    'AMZN': [517, 172, 210, 142, 112, 37, 54, 122, 90, 64],
+    'DPZ': [367, 145, 243, 117, 101, 162, 85, 102, 95, 103],
+    'BTC': [1020, 113, 109, 151, 64, 32, 5, 12, 10, 4],
+    'NFLX': [484, 300, 216, 112, 78, 18, 63, 86, 137, 26],
+}
+df = pd.DataFrame(data)
+
+
+df['Date'] = pd.to_datetime(df['Date'].str.split(' - ').str[1])
+
+
+plt.figure(figsize=(10, 6))
+plt.plot(df['Date'], df['AMZN'], label='AMZN')
+plt.plot(df['Date'], df['DPZ'], label='DPZ')
+plt.plot(df['Date'], df['BTC'], label='BTC')
+plt.plot(df['Date'], df['NFLX'], label='NFLX')
+plt.xlabel('Date')
+plt.ylabel('Count')
+plt.title('Historical Stock Prices')
+plt.legend()
+plt.grid(True)
+plt.show()
