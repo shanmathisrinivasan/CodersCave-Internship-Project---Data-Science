@@ -1,0 +1,49 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Define the dataset directly in the code
+data = {
+    'id': [1, 2, 3, 4, 5],
+    'person_name': ['Amy Jones', 'Brayden Harding', 'Charlie Smith', 'David Johnson', 'Emma Brown'],
+    'nine_box_category': ['2%', '2%', '96%', '2%', '2%'],
+    'feedback': ['Great team player, always ready to help.', 'Needs improvement in meeting deadlines.', 'Exemplary leadership skills.', 'Effective communication with clients.', 'Creative problem solver.'],
+    'updated': [True, False, True, True, False],
+    'reviewed': [True, True, True, False, True]
+}
+
+df = pd.DataFrame(data)
+
+# Display the DataFrame to understand its structure and content
+print(df)
+
+# Check for missing values and data types of columns
+print(df.info())
+
+
+
+# Visualize the distribution of categorical columns using count plots
+plt.figure(figsize=(10, 6))
+sns.countplot(x='nine_box_category', data=df)
+plt.title('Distribution of Nine-Box Categories')
+plt.xlabel('Nine-Box Category')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.show()
+
+
+plt.figure(figsize=(8, 5))
+sns.countplot(x='updated', data=df)
+plt.title('Distribution of Updated Flag')
+plt.xlabel('Updated')
+plt.ylabel('Count')
+plt.show()
+
+plt.figure(figsize=(8, 5))
+sns.countplot(x='reviewed', data=df)
+plt.title('Distribution of Reviewed Flag')
+plt.xlabel('Reviewed')
+plt.ylabel('Count')
+plt.show()
+
+
